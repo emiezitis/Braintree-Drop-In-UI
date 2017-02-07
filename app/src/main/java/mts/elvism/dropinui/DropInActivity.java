@@ -22,15 +22,14 @@ public class DropInActivity extends AppCompatActivity {
     private static final String TAG = DropInActivity.class.getSimpleName();
     private String clientToken;
     private AsyncHttpClient client = new AsyncHttpClient();
-    private static final String SERVER_BASE = "http://sparkappdevelopment.com/Braintree/checkout.php";
+    private static final String SERVER_URL = "YOR_WEBSERVER_URL";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drop_in);
-        Intent intent = getIntent();
-        clientToken = intent.getStringExtra("clientToken");
+
 
     }
 
@@ -60,7 +59,7 @@ public class DropInActivity extends AppCompatActivity {
                 params.put("payment_method_nonce", "fake-valid-nonce");
                 params.put("amount", "10.00");
 
-                client.post(SERVER_BASE + "/payment" , params , new TextHttpResponseHandler() {
+                client.post(SERVER_URL + "/payment" , params , new TextHttpResponseHandler() {
 
 
                     @Override
